@@ -1,0 +1,39 @@
+<ion-view view-title="家长会">
+  <ion-nav-bar class="bar-stable">
+  </ion-nav-bar>
+  <ion-content>
+    <ion-list>
+      <ion-item class="item-avatar item-icon-right" ng-repeat="fix in groups.fixes" href="#/tab/bbs/{{fix.id}}" ng-click="saveGroup(fix)">
+        <img src="./img/school-1.jpg"></img>
+        <span>{{fix.name}}</span>
+        <span class="badge badge-stable">{{fix.titles}}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item class="item-avatar item-icon-right" href="#/tab/bbs/favorite/list">
+        <img src="./img/school-1.jpg"></img>
+        <span>收藏的话题</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <div class="item item-divider">我的关注</div>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="favority in groups.favorites" href="#/tab/bbs/{{favority.id}}" ng-click="saveGroup(favority)">
+        <img src="./img/school-1.jpg"></img>
+        <span>{{favority.name}}</span>
+        <span class="badge badge-stable">{{favority.titles}}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="unfavority(favority)">
+          取消关注
+        </ion-option-button>
+      </ion-item>
+      <div class="item item-divider">看看更多</div>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="other in groups.others" href="#/tab/bbs/{{other.id}}" ng-click="saveGroup(other)">
+        <img src="./img/school-1.jpg"></img>
+        <span>{{other.name}}</span>
+        <span class="badge badge-stable">{{other.titles}}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="favority(other)">
+          关注
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

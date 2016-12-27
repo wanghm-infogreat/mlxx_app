@@ -1,0 +1,39 @@
+<ion-view view-title="消息">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="padding" delegate-handle="scrollMessage">
+  <ion-refresher pulling-text="加载更多" on-refresh="doLoadMore()"></ion-refresher>
+  <div ng-repeat="message in messages">
+    <div class="list card" style="margin-right:50px;" ng-if="user.id != message.from_user_id">
+      <div class="item item-divider item-avatar" style="height:52px;">
+        <img ng-src="{{message.from.photo_url}}"></img>
+        <span><pre>{{message.from.name}} {{message.from.call}}</pre></span>
+        <span style="font-size:50%;color:gray;">{{message.send_time | date:'yyyy年M月d日 h:m'}}</span>
+      </div>
+      <div class="item item-body">
+        <pre>    {{message.message}}</pre>
+      </div>
+    </div>
+    <div class="list card" style="margin-left:50px;" ng-if="user.id == message.from_user_id">
+      <div class="item item-divider item-avatar" style="height:52px;">
+        <img ng-src="{{message.from.photo_url}}"></img>
+        <span><pre>{{message.from.name}} {{message.from.call}}</pre></span>
+        <span style="font-size:50%;color:gray;">{{message.send_time | date:'yyyy年M月d日 h:m'}}</span>
+      </div>
+      <div class="item item-body">
+        <pre>    {{message.message}}</pre>
+      </div>
+    </div>
+  </div>
+  </ion-content>
+  <ion-footer-bar keyboardshow class="bar item-input-inset">
+    <label class="item-input-wrapper" >
+      <i class="icon ion-edit placeholder-icon"></i>
+      <input type="text" placeholder="说点什么" ng-model="content">
+    </label>
+    <button class="button button-positive" ng-click="doSend()">发送</button>
+  </ion-footer-bar>
+</ion-view>

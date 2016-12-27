@@ -1,0 +1,53 @@
+<ion-view view-title="创学园地">
+  <ion-nav-bar class="bar-stable">
+  </ion-nav-bar>
+  <ion-content class="padding">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="list card" ng-repeat="bank in banks">
+      <div class="item item-divider row">
+        <div class="col" align="center">{{bank.title_date | date:'yyyy年M月d日'}}</div>
+      </div>
+      <div class="item item-body">
+        <div align="center">
+          <table width="100%">
+            <tr>
+              <td align="center" width="65%" style="font-size:125%;color:red;">
+                <b>{{bank.title}}</b>
+              </td>
+              <td align="center" width="35%" style="font-size:60%;color:gray;">
+                {{bank.title_time}}
+              </td>
+            </tr>
+          </table>
+        </div>
+        <hr>
+        <div>
+          <pre>　　{{bank.content}}<pre>
+        </div>
+        <div align="left" ng-if="bank.photos.length==1">
+          <img width="100%" class="card img-responsive" ng-repeat="photo in bank.photos" ng-src="{{photo.url}}" style="margin-left:0;"></img>
+        </div>
+        <div align="left" ng-if="bank.photos.length==2">
+          <img width="48%" class="card img-responsive" ng-repeat="photo in bank.photos" ng-src="{{photo.url}}"></img>
+        </div>
+        <div align="left" ng-if="bank.photos.length>=3">
+          <img width="32%" class="card img-responsive" ng-repeat="photo in bank.photos" ng-src="{{photo.url}}"></img>
+        </div>
+        <div align="center">
+          <video width="105%" class="card img-responsive" ng-repeat="video in bank.videos" src="{{video.url | trustUrl}}" controls="controls" style="margin-left:-7px;"></video>
+        </div>
+        <div ng-if="bank.show">
+          <hr>
+          <div>
+            <pre>　　{{bank.answer}}<pre>
+          </div>
+        </div>
+      </div>
+      <div class="button-bar" ng-if="!bank.show">
+        <a class="button" ng-click="inputPassword(bank)">答案</a>
+      </div>
+    </div>
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
+		

@@ -1,0 +1,33 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{dash.title}}">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content delegate-handle="scrollComment">
+    <ion-refresher pulling-text="加载更多" on-refresh="loadMore()"></ion-refresher>
+    <div class="list card" ng-if="loaded" ng-repeat="comment in comments">
+      <div class="item item-divider item-avatar" style="height:52px;">
+        <img ng-src="{{comment.user.photo_url}}" ng-click="$root.showUser(comment.user)"></img>
+        <span><pre>{{comment.user.name}} {{comment.user.call}}</pre></span>
+        <span style="font-size:50%;color:gray;">{{comment.comment_time | date:'yyyy年MM月dd日 HH:mm'}}</span>
+      </div>
+      <div class="item item-body">
+        <pre>{{comment.content}}</pre>
+      </div>
+    </div>
+  </ion-content>
+  <ion-footer-bar keyboardshow class="bar item-input-inset">
+    <label class="item-input-wrapper" >
+      <i class="icon ion-edit placeholder-icon"></i>
+      <input type="text" placeholder="说点什么" ng-model="content">
+    </label>
+    <button class="button button-positive" ng-click="doSend()">发送</button>
+  </ion-footer-bar>
+</ion-view>

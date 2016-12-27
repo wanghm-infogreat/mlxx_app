@@ -1,0 +1,66 @@
+/* Empty. Add your own CSS if you like */
+
+a:link {text-decoration: none;}
+a:visited {text-decoration: none;}
+a:active {text-decoration: none;}
+a:hover {text-decoration: none;}
+
+pre {
+  font-family: 微软雅黑;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.popup-container .popup {
+    width: 300px;
+    max-width: 100%;
+    max-height: 90%;
+    border-radius: 10px;
+    background-color: rgba(240, 240, 240, 0.9);
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-direction: normal;
+    -webkit-box-orient: vertical;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    box-shadow: 0px 0px 10px 0px #aaa;
+}
+
+.popup-buttons .button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -moz-box-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    display: block;
+    min-height: 45px;
+    border-radius: 5px;
+    line-height: 20px;
+    margin-right: 5px;
+}
+
+.popup-container input, .popup-container textarea {
+    width: 100%;
+    border-radius: 5px;
+    padding-left: 5px;
+}
+
+.item-avatar > img:first-child {
+    border-radius: 5%;
+}
+
+.item-avatar .item-content > img:first-child {
+    border-radius: 5%;
+}
+
+.padding .card img {
+    margin: 0px 0px 0px 3px;
+}
+

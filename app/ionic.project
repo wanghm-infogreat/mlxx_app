@@ -1,0 +1,1 @@
+{  "name": "mlxx",  "app_id": "",  "proxies": [    {      "path": "/mlxx",      "proxyUrl": "http://localhost/dev/mlxx/"    },    {      "path": "/upload",      "proxyUrl": "http://localhost/dev/upload/"    }  ]}

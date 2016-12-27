@@ -1,0 +1,28 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="收藏的话题">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="favorite in title_favorites" href="#/tab/bbs/comment/{{favorite.title.id}}" ng-click="saveTitle(favorite.title)">
+        <img ng-src="{{favorite.title.user.photo_url}}"></img>
+        <span>{{favorite.title.name}}</span>
+        <span class="badge badge-stable">{{favorite.title.comments}}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="unfavority(favorite.title)">
+          取消收藏
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="moreFavoCanBeLoaded()" on-infinite="loadMore()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

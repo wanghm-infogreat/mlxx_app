@@ -1,0 +1,32 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="新消息">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content delegate-handle="scrollTitle">
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar" ng-repeat="friend in friends">
+        <img ng-src="{{friend.friend.photo_url}}"></img>
+        <span><pre>{{friend.friend.name}} {{friend.friend.call}}</pre></span>
+        <span class="badge" style="margin-top:-30px;border:0px;width:72px;margin-right:-40px;">
+          <ion-checkbox ng-model="friend.checked"></ion-checkbox>
+        </span>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="hasMore()" on-infinite="doLoadMore()"></ion-infinite-scroll>
+  </ion-content>
+  <ion-footer-bar keyboardshow class="bar item-input-inset">
+    <label class="item-input-wrapper" >
+      <i class="icon ion-edit placeholder-icon"></i>
+      <input type="text" placeholder="说点什么" ng-model="content">
+    </label>
+    <button class="button button-positive" ng-click="doSendList()">发送</button>
+  </ion-footer-bar>
+</ion-view>

@@ -1,0 +1,21 @@
+<ion-view view-title="{{student.student.name}} 同学">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="padding">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="list card" ng-repeat="evaluation in evaluations">
+      <div class="item item-divider item-avatar" style="height:52px;">
+        <img ng-src="{{evaluation.user.photo_url}}" ng-click="$root.showUser(evaluation.user)"></img>
+        <span><pre>{{evaluation.user.name}} {{evaluation.user.call}}</pre></span>
+        <span style="font-size:50%;color:gray;">{{evaluation.evaluate_time | date:'yyyy年MM月dd日 HH:mm'}}</span>
+      </div>
+      <div class="item item-body">
+        <pre>    {{evaluation.content}}</pre>
+      </div>
+    </div>
+    <ion-infinite-scroll ng-if="hasMore()" on-infinite="doLoadMore()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

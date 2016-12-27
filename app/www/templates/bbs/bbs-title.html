@@ -1,0 +1,31 @@
+<!--
+  This template loads for the 'tab.friend-detail' state (app.js)
+  'friend' is a $scope variable created in the FriendsCtrl controller (controllers.js)
+  The FriendsCtrl pulls data from the Friends service (service.js)
+  The Friends service returns an array of friend data
+-->
+<ion-view view-title="{{group.name}}">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+    <ion-nav-buttons side="right">
+        <button class="button button-clear button-positive" ng-click="doNewTitle()">新话题</button>
+    </ion-nav-buttons>
+  </ion-nav-bar>
+  <ion-content delegate-handle="scrollTitle">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="title in titles" href="#/tab/bbs/comment/{{title.id}}" ng-click="saveTitle(title)">
+        <img ng-src="{{title.user.photo_url}}"></img>
+        <span>{{title.name}}</span>
+        <span class="badge badge-stable">{{title.comments}}</span>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+        <ion-option-button class="button-assertive" ng-click="favority(title)">
+          收藏
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+    <ion-infinite-scroll ng-if="moreDataCanBeLoaded()" on-infinite="loadMore()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>

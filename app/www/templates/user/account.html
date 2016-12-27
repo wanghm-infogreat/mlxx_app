@@ -1,0 +1,33 @@
+<ion-view view-title="账号">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">账号</span>
+        <input type="text" ng-model="account.user" disabled="true">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">旧密码</span>
+        <input type="password" ng-model="account.oldpass">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">新密码</span>
+        <input type="password" ng-model="account.newpass">
+      </label>
+      <label class="item item-input">
+        <span class="input-label">确认密码</span>
+        <input type="password" ng-model="account.confirmpass">
+      </label>
+      <button class="button button-block button-positive" ng-click="password()">
+        确定
+      </button>
+      <button class="button button-block" ng-click="logout()">
+        退出
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

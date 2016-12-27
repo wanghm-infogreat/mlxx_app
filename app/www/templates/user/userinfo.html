@@ -1,0 +1,26 @@
+<ion-view view-title="个人信息">
+  <ion-nav-bar class="bar-stable">
+    <ion-nav-back-button class="button-clear">
+      <i class="icon ion-ios-arrow-back"></i> 返回
+    </ion-nav-back-button>
+  </ion-nav-bar>
+  <ion-content class="padding">
+    <div class="list">
+      <label class="item item-input">
+        <span class="input-label">姓名（昵称）</span>
+        <input type="text" ng-model="user.name">
+      </label>
+      <label class="item item-input item-avatar item-content" ng-click="selectAvatar()">
+        <span class="input-label">头像照片</span>
+        <img ng-src="{{user.photo_url}}" class="item-image" style="margin-left:110px;"></img>
+      </label>
+      <label class="item item-input">
+        <span class="input-label">称呼</span>
+        <input type="text" ng-model="user.call" placeholder="某同学 家长">
+      </label>
+      <button class="button button-block button-positive" ng-click="UserInfo()">
+        确定
+      </button>
+    </div>
+  </ion-content>
+</ion-view>

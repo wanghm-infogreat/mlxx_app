@@ -1,0 +1,16 @@
+<!-- the login -->
+<ion-view view-title="用户登录" name="login-view">
+  <ion-nav-bar class="bar-stable">
+  </ion-nav-bar>
+  <ion-content class="padding">
+      <div class="list list-inset">
+          <label class="item item-input">
+              <input type="text" placeholder="用户名（手机号）" ng-model="account.user" />
+          </label>
+          <label class="item item-input">
+              <input type="password" placeholder="密码" ng-model="account.pass" />
+          </label>
+      </div>
+      <button class="button button-block button-calm" ng-click="login()" >登录</button>
+  </ion-content>
+</ion-view>

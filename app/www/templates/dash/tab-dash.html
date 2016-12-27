@@ -1,0 +1,50 @@
+<ion-view view-title="校园公告">
+  <ion-nav-bar class="bar-stable">
+  </ion-nav-bar>
+  <ion-content class="padding">
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
+    <div class="list card" ng-repeat="dash in dashs">
+      <div class="item item-divider row">
+        <div class="col col-33" align="left"><img src="./img/class_{{dash.class_code}}.png" width="50%"></img></div>
+        <div class="col col-33" align="center">{{dash.title_date | date:'yyyy年M月d日'}}</div>
+        <div class="col col-33" align="right"><a class="ion-ios-sunny-outline"></a></div>
+      </div>
+      <div class="item item-body">
+        <div class="row">
+          <div class="col col-75" style="color:red;" align="center"><b>{{dash.title}}</b></div>
+          <div class="col col-25" style="font-size:75%;color:gray;">{{dash.title_time}}</div>
+        </div>
+        <hr>
+        <div>
+          <pre>{{dash.content}}</span>
+        </div>
+        <div align="left" ng-if="dash.photos.length==1">
+          <img width="100%" class="card img-responsive" ng-repeat="photo in dash.photos" ng-src="{{photo.url}}" style="margin-left:0;"></img>
+        </div>
+        <div align="left" ng-if="dash.photos.length==2">
+          <img width="48%" class="card img-responsive" ng-repeat="photo in dash.photos" ng-src="{{photo.url}}"></img>
+        </div>
+        <div align="left" ng-if="dash.photos.length>=3">
+          <img width="32%" class="card img-responsive" ng-repeat="photo in dash.photos" ng-src="{{photo.url}}"></img>
+        </div>
+        <div align="center">
+          <video width="105%" class="card img-responsive" ng-repeat="video in dash.videos" src="{{video.url | trustUrl}}" controls="controls" style="margin-left:-7px;"></video>
+        </div>
+      </div>
+      <div class="item item-divider row">
+        <div class="col col-33" align="center">
+          <a class="ion-ios-heart-outline" ng-click="doLike(dash)"> {{dash.likes}}</a>
+        </div>
+        <span style="color:lightgray;">|</span>
+        <div class="col col-33" align="center">
+          <a class="ion-share" ng-click="doShare(dash)"> {{dash.shares}}</a>
+        </div>
+        <span style="color:lightgray;">|</span>
+        <div class="col col-33" align="center">
+          <a class="ion-chatbox-working" href="#/tab/dash/comment/{{dash.id}}"> {{dash.comments}}</a>
+        </div>
+      </div>
+    </div>
+    <ion-infinite-scroll ng-if="hasMore()" on-infinite="doLoadMore()"></ion-infinite-scroll>
+  </ion-content>
+</ion-view>
