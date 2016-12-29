@@ -2,6 +2,7 @@
   <ion-nav-bar class="bar-stable">
   </ion-nav-bar>
   <ion-content>
+    <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
       <ion-item class="item-avatar item-icon-right" ng-repeat="fix in groups.fixes" href="#/tab/bbs/{{fix.id}}" ng-click="saveGroup(fix)">
         <img src="./img/school-1.jpg"></img>

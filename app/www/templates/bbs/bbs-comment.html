@@ -11,7 +11,7 @@
     </ion-nav-back-button>
   </ion-nav-bar>
   <ion-content delegate-handle="scrollComment">
-    <ion-refresher pulling-text="加载更多" on-refresh="loadMore()"></ion-refresher>
+    <ion-refresher pulling-text="加载更多" on-refresh="doLoadMore()"></ion-refresher>
     <div class="list card" ng-if="loaded" ng-repeat="comment in comments">
       <div class="item item-divider item-avatar" style="height:52px;">
         <img ng-src="{{comment.user.photo_url}}" ng-click="$root.showUser(comment.user)"></img>

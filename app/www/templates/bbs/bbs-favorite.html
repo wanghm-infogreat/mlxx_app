@@ -13,7 +13,7 @@
   <ion-content>
     <ion-refresher pulling-text="下拉刷新" on-refresh="doRefresh()"></ion-refresher>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="favorite in title_favorites" href="#/tab/bbs/comment/{{favorite.title.id}}" ng-click="saveTitle(favorite.title)">
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="favorite in favorites" href="#/tab/bbs/comment/{{favorite.title.id}}" ng-click="saveTitle(favorite.title)">
         <img ng-src="{{favorite.title.user.photo_url}}"></img>
         <span>{{favorite.title.name}}</span>
         <span class="badge badge-stable">{{favorite.title.comments}}</span>
