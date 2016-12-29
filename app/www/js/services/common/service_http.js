@@ -14,10 +14,10 @@ function HttpInterceptor($q, $cordovaToast, $location) {
           config.headers.authorization = token;
         }
         
-        //if (ngCordova) {
-        //  config.url = "http://192.168.66.29/dev" + config.url;
+        if (window.cordova) {
+          config.url = "http://192.168.66.29/dev" + config.url;
         //  config.url = "http://192.168.2.111/dev" + config.url;
-        //}
+        }
         
         if (config.method == 'POST' || config.method == 'PUT') {
 
@@ -39,8 +39,11 @@ function HttpInterceptor($q, $cordovaToast, $location) {
     response: function(res){
       // 如果返回不是空白
       if (res.data != null && res.data.message != null) {
-			//$cordovaToast.showShortCenter(res.data.message);
+	  	if (window.cordova) {
+			$cordovaToast.showShortCenter(res.data.message);
+		} else {
         	alert(res.data.message);
+		}
       }
       return res;
     },
@@ -62,11 +65,11 @@ function HttpInterceptor($q, $cordovaToast, $location) {
       } else if(402 === err.status) {
         // 如果返回不是空白
         if (err.data != null && err.data.message != null) {
-	  	  //if (ngCordova) {
-		//	$cordovaToast.showShortCenter(err.data.message);
-		  //} else {
+		  if (window.cordova) {
+			$cordovaToast.showShortCenter(err.data.message);
+		  } else {
         	alert(err.data.message);
-		 // }
+		  }
         }
       } else if(403 === err.status) {
       	// 无访问权限
