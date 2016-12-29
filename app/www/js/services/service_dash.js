@@ -65,7 +65,7 @@ angular.module('starter.service.dash', [])
     /**********************************************************/
     // 是否还有更多数据
     /**********************************************************/
-    hasMore: function($scope) {
+    hasMore: function() {
       return moredata;
     },
 
